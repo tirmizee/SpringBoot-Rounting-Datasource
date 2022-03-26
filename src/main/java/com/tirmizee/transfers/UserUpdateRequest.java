@@ -1,2 +1,4 @@
-package com.tirmizee.transfers;public class UserUpdateRequest {
+package com.tirmizee.transfers;
+
+public class UserUpdateRequest {
 }

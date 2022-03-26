@@ -1,2 +1,4 @@
-package com.tirmizee.transfers;public class UserCreateResponse {
+package com.tirmizee.transfers;
+
+public class UserCreateResponse {
 }

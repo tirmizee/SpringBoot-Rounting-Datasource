@@ -1,2 +1,4 @@
-package com.tirmizee.transfers;public class UserCreateRequest {
+package com.tirmizee.transfers;
+
+public class UserCreateRequest {
 }
