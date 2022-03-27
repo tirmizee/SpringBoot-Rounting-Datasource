@@ -1,27 +1,35 @@
 package com.tirmizee.services;
 
-import com.tirmizee.transfers.*;
+import com.tirmizee.entities.User;
+import com.tirmizee.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
 public class UserService {
 
-    public UserResponse getById(Long id) {
-        return null;
+    private final UserRepository userRepository;
+
+    @Transactional(readOnly = true)
+    public User getById(Long id) {
+        return userRepository.findById(id).orElseGet(null);
     }
 
-    public UserResponse getByUsername(String username) {
-        return null;
+    @Transactional(readOnly = true)
+    public User getByUsername(String username) {
+        return userRepository.findByUsername(username).orElseGet(null);
     }
 
-    public UserUpdateResponse update(UserUpdateRequest request) {
-        return null;
+    @Transactional
+    public User update(User user) {
+        return userRepository.save(user);
     }
 
-    public UserCreateResponse create(UserCreateRequest request) {
-        return null;
+    @Transactional
+    public User create(User user) {
+        return userRepository.save(user);
     }
 
 }

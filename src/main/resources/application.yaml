@@ -1,25 +1,39 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/test
-    username: my_user
-    password:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    hikari:
-      connection-timeout: '600000'
-      idle-timeout: '3000000'
-      maximum-pool-size: '2'
-      max-lifetime: '3000000'
-      auto-commit: 'true'
-      minimum-idle: '1'
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
-        use_sql_comments: 'true'
-        format_sql: 'true'
-        show_sql: 'true'
-        type: trace
-        hbm2ddl.auto: update
+    master:
+      hikari:
+        jdbc-url: jdbc:mysql://localhost:3306/test
+        username: my_user
+        password:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        connection-timeout: '600000'
+        idle-timeout: '3000000'
+        maximum-pool-size: '2'
+        max-lifetime: '3000000'
+        auto-commit: false
+        minimum-idle: '1'
+    slave:
+      hikari:
+        jdbc-url: jdbc:mysql://localhost:3306/test
+        username: my_user
+        password:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        connection-timeout: '600000'
+        idle-timeout: '3000000'
+        maximum-pool-size: '2'
+        max-lifetime: '3000000'
+        auto-commit: false
+        minimum-idle: '1'
+    jpa:
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL8Dialect
+          use_sql_comments: 'true'
+          format_sql: 'true'
+          show_sql: 'true'
+          type: trace
+          hbm2ddl.auto: none
+          connection.provider_disables_autocommit: true
 logging:
   level:
     com.zaxxer.hikari: TRACE
